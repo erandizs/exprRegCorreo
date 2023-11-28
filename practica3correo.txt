@@ -1,0 +1,19 @@
+%{
+#include <stdio.h>
+
+%}
+
+%%
+
+[a-zA-Z0-9_]*[@][u][a][s][.][e][d][u].[m][x]   { printf("La cadena coincide con el patrón @uas.edu.mx: %s\n", yytext); }
+[a-zA-Z0-9_]*[@][h][o][t][m][a][i][l][.][c][o][m]   { printf("La cadena coincide con el patrón @hotmail.com %s\n", yytext); }
+[a-zA-Z0-9_]*[0-9]*[@][g][m][a][i][l][.][c][o][m]   { printf("La cadena coincide con el patrón @gmail.com %s\n", yytext); }
+[a-zA-Z0-9_]*[0-9]*[@][x][y][z][.][a-z]*[.][m][x]   { printf("La cadena coincide con el patrón @xyz..mx %s\n", yytext); }
+.          { /* Ignorar otros caracteres */ }
+
+%%
+
+int main() {
+    yylex(); // Inicia el análisis léxico
+    return 0;
+}
